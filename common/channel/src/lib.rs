@@ -1,8 +1,17 @@
 // Copyright (c) The Libra Core Contributors
 // SPDX-License-Identifier: Apache-2.0
 
+#![forbid(unsafe_code)]
+
 //! Provides an mpsc (multi-producer single-consumer) channel wrapped in an
-//! [`IntGauge`](metrics::IntGauge)
+//! [`IntGauge`](libra_metrics::IntGauge) that counts the number of currently
+//! queued items. While there is only one [`channel::Receiver`], there can be
+//! many [`channel::Sender`]s, which are also cheap to clone.
+//!
+//! This channel differs from our other channel implementation, [`channel::libra_channel`],
+//! in that it is just a single queue (vs. different queues for different keys)
+//! with backpressure (senders will block if the queue is full instead of evicting
+//! another item in the queue) that only implements FIFO (vs. LIFO or KLAST).
 
 use futures::{
     channel::mpsc,
@@ -10,24 +19,42 @@ use futures::{
     stream::{FusedStream, Stream},
     task::{Context, Poll},
 };
-use metrics::IntGauge;
+use libra_metrics::IntGauge;
 use std::pin::Pin;
 
 #[cfg(test)]
 mod test;
 
-/// Wrapper around a value with an `IntGauge`
-/// It is used to gauge the number of elements in a `mpsc::channel`
-#[derive(Clone)]
-pub struct WithGauge<T> {
+pub mod libra_channel;
+#[cfg(test)]
+mod libra_channel_test;
+
+pub mod message_queues;
+#[cfg(test)]
+mod message_queues_test;
+
+/// An [`mpsc::Sender`](futures::channel::mpsc::Sender) with an [`IntGauge`]
+/// counting the number of currently queued items.
+pub struct Sender<T> {
+    inner: mpsc::Sender<T>,
     gauge: IntGauge,
-    value: T,
 }
 
-/// Similar to `mpsc::Sender`, but with an `IntGauge`
-pub type Sender<T> = WithGauge<mpsc::Sender<T>>;
-/// Similar to `mpsc::Receiver`, but with an `IntGauge`
-pub type Receiver<T> = WithGauge<mpsc::Receiver<T>>;
+/// An [`mpsc::Receiver`](futures::channel::mpsc::Receiver) with an [`IntGauge`]
+/// counting the number of currently queued items.
+pub struct Receiver<T> {
+    inner: mpsc::Receiver<T>,
+    gauge: IntGauge,
+}
+
+impl<T> Clone for Sender<T> {
+    fn clone(&self) -> Self {
+        Self {
+            inner: self.inner.clone(),
+            gauge: self.gauge.clone(),
+        }
+    }
+}
 
 /// `Sender` implements `Sink` in the same way as `mpsc::Sender`, but it increments the
 /// associated `IntGauge` when it sends a message successfully.
@@ -35,40 +62,38 @@ impl<T> Sink<T> for Sender<T> {
     type Error = mpsc::SendError;
 
     fn poll_ready(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        (*self).value.poll_ready(cx)
+        (*self).inner.poll_ready(cx)
     }
 
     fn start_send(mut self: Pin<&mut Self>, msg: T) -> Result<(), Self::Error> {
-        self.gauge.inc();
-        (*self).value.start_send(msg).map_err(|e| {
-            self.gauge.dec();
-            e
-        })?;
-        Ok(())
+        (*self).inner.start_send(msg).map(|_| self.gauge.inc())
     }
 
     fn poll_flush(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        Pin::new(&mut self.value).poll_flush(cx)
+        Pin::new(&mut self.inner).poll_flush(cx)
     }
 
     fn poll_close(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        Pin::new(&mut self.value).poll_close(cx)
+        Pin::new(&mut self.inner).poll_close(cx)
     }
 }
 
 impl<T> Sender<T> {
     pub fn try_send(&mut self, msg: T) -> Result<(), mpsc::SendError> {
-        self.gauge.inc();
-        (*self).value.try_send(msg).map_err(|e| {
-            self.gauge.dec();
-            e.into_send_error()
-        })
+        (*self)
+            .inner
+            .try_send(msg)
+            .map(|_| self.gauge.inc())
+            .map_err(mpsc::TrySendError::into_send_error)
     }
 }
 
-impl<T> FusedStream for Receiver<T> {
+impl<T> FusedStream for Receiver<T>
+where
+    T: std::fmt::Debug,
+{
     fn is_terminated(&self) -> bool {
-        self.value.is_terminated()
+        self.inner.is_terminated()
     }
 }
 
@@ -77,12 +102,12 @@ impl<T> FusedStream for Receiver<T> {
 impl<T> Stream for Receiver<T> {
     type Item = T;
 
-    fn poll_next(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<T>> {
-        let poll = Pin::new(&mut self.value).poll_next(cx);
-        if let Poll::Ready(Some(_)) = poll {
+    fn poll_next(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {
+        let next = Pin::new(&mut self.inner).poll_next(cx);
+        if let Poll::Ready(Some(_)) = next {
             self.gauge.dec();
         }
-        poll
+        next
     }
 }
 
@@ -91,22 +116,18 @@ pub fn new<T>(size: usize, gauge: &IntGauge) -> (Sender<T>, Receiver<T>) {
     gauge.set(0);
     let (sender, receiver) = mpsc::channel(size);
     (
-        WithGauge {
+        Sender {
+            inner: sender,
             gauge: gauge.clone(),
-            value: sender,
         },
-        WithGauge {
+        Receiver {
+            inner: receiver,
             gauge: gauge.clone(),
-            value: receiver,
         },
     )
 }
 
-lazy_static::lazy_static! {
-    pub static ref TEST_COUNTER: IntGauge =
-        IntGauge::new("TEST_COUNTER", "Counter of network tests").unwrap();
-}
-
 pub fn new_test<T>(size: usize) -> (Sender<T>, Receiver<T>) {
-    new(size, &TEST_COUNTER)
+    let gauge = IntGauge::new("TEST_COUNTER", "test").unwrap();
+    new(size, &gauge)
 }

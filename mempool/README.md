@@ -3,7 +3,6 @@ id: mempool
 title: Mempool
 custom_edit_url: https://github.com/libra/libra/edit/master/mempool/README.md
 ---
-# Mempool
 
 Mempool is a memory-buffer that holds the transactions that are waiting to be executed.
 
@@ -50,4 +49,3 @@ SystemTTL is checked periodically in the background, while the expiration specif
     ├── runtime.rs               # bundle of shared mempool and gRPC service
     └── shared_mempool.rs        # shared mempool
 ```
-
