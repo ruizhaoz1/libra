@@ -193,7 +193,7 @@ checksum = "b246867b8b3b6ae56035f1eb1ed557c1d8eae97f0d53696138a50fa0e3a3b8c0"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -246,7 +246,7 @@ dependencies = [
  "executor",
  "executor-test-helpers",
  "executor-types",
- "futures 0.3.5",
+ "futures 0.3.7",
  "hex",
  "itertools 0.9.0",
  "libra-canonical-serialization",
@@ -281,7 +281,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "bytes",
- "futures 0.3.5",
+ "futures 0.3.7",
  "hyper",
  "libra-canonical-serialization",
  "libra-config",
@@ -442,7 +442,7 @@ dependencies = [
 name = "bounded-executor"
 version = "0.1.0"
 dependencies = [
- "futures 0.3.5",
+ "futures 0.3.7",
  "futures-semaphore",
  "libra-workspace-hack",
  "tokio",
@@ -631,7 +631,7 @@ name = "channel"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-metrics",
  "libra-types",
  "libra-workspace-hack",
@@ -747,7 +747,7 @@ dependencies = [
  "consensus-types",
  "debug-interface",
  "flate2",
- "futures 0.3.5",
+ "futures 0.3.7",
  "generate-key",
  "hex",
  "itertools 0.9.0",
@@ -890,7 +890,7 @@ dependencies = [
  "executor-test-helpers",
  "executor-types",
  "fail",
- "futures 0.3.5",
+ "futures 0.3.7",
  "itertools 0.9.0",
  "libra-canonical-serialization",
  "libra-config",
@@ -1455,7 +1455,7 @@ dependencies = [
  "once_cell",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -1756,9 +1756,9 @@ checksum = "1b980f2816d6ee8673b6517b52cb0e808a180efc92e5c19d02cdda79066703ef"
 
 [[package]]
 name = "futures"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e05b85ec287aac0dc34db7d4a569323df697f9c55b99b15d6b4ef8cde49f613"
+checksum = "95314d38584ffbfda215621d723e0a3906f032e03ae5551e650058dac83d4797"
 dependencies = [
  "futures-channel",
  "futures-core",
@@ -1771,9 +1771,9 @@ dependencies = [
 
 [[package]]
 name = "futures-channel"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f366ad74c28cca6ba456d95e6422883cfb4b252a83bed929c83abfdbbf2967d5"
+checksum = "0448174b01148032eed37ac4aed28963aaaa8cfa93569a08e5b479bbc6c2c151"
 dependencies = [
  "futures-core",
  "futures-sink",
@@ -1781,15 +1781,15 @@ dependencies = [
 
 [[package]]
 name = "futures-core"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "59f5fff90fd5d971f936ad674802482ba441b6f09ba5e15fd8b39145582ca399"
+checksum = "18eaa56102984bed2c88ea39026cff3ce3b4c7f508ca970cedf2450ea10d4e46"
 
 [[package]]
 name = "futures-executor"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "10d6bb888be1153d3abeb9006b11b02cf5e9b209fda28693c31ae1e4e012e314"
+checksum = "f5f8e0c9258abaea85e78ebdda17ef9666d390e987f006be6080dfe354b708cb"
 dependencies = [
  "futures-core",
  "futures-task",
@@ -1798,51 +1798,51 @@ dependencies = [
 
 [[package]]
 name = "futures-io"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de27142b013a8e869c14957e6d2edeef89e97c289e69d042ee3a49acd8b51789"
+checksum = "6e1798854a4727ff944a7b12aa999f58ce7aa81db80d2dfaaf2ba06f065ddd2b"
 
 [[package]]
 name = "futures-macro"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d0b5a30a4328ab5473878237c447333c093297bded83a4983d10f4deea240d39"
+checksum = "e36fccf3fc58563b4a14d265027c627c3b665d7fed489427e88e7cc929559efe"
 dependencies = [
  "proc-macro-hack",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
 name = "futures-semaphore"
 version = "0.1.0"
 dependencies = [
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-workspace-hack",
  "tokio",
 ]
 
 [[package]]
 name = "futures-sink"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3f2032893cb734c7a05d85ce0cc8b8c4075278e93b24b66f9de99d6eb0fa8acc"
+checksum = "0e3ca3f17d6e8804ae5d3df7a7d35b2b3a6fe89dac84b31872720fc3060a0b11"
 
 [[package]]
 name = "futures-task"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bdb66b5f09e22019b1ab0830f7785bcea8e7a42148683f99214f73f8ec21a626"
+checksum = "96d502af37186c4fef99453df03e374683f8a1eec9dcc1e66b3b82dc8278ce3c"
 dependencies = [
  "once_cell",
 ]
 
 [[package]]
 name = "futures-util"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8764574ff08b701a084482c3c7031349104b07ac897393010494beaa18ce32c6"
+checksum = "abcb44342f62e6f3e8ac427b8aa815f724fd705dfad060b18ac7866c15bb8e34"
 dependencies = [
  "futures-channel",
  "futures-core",
@@ -1851,7 +1851,7 @@ dependencies = [
  "futures-sink",
  "futures-task",
  "memchr",
- "pin-project",
+ "pin-project 1.0.1",
  "pin-utils",
  "proc-macro-hack",
  "proc-macro-nested",
@@ -2225,7 +2225,7 @@ dependencies = [
  "httparse",
  "httpdate",
  "itoa",
- "pin-project",
+ "pin-project 0.4.25",
  "socket2",
  "tokio",
  "tower-service",
@@ -2278,7 +2278,7 @@ dependencies = [
  "proc-macro-hack",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -2502,7 +2502,7 @@ dependencies = [
  "chrono",
  "dirs 3.0.1",
  "either",
- "futures 0.3.5",
+ "futures 0.3.7",
  "futures-util",
  "http",
  "k8s-openapi",
@@ -2732,7 +2732,7 @@ dependencies = [
  "libra-workspace-hack",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -2927,7 +2927,7 @@ dependencies = [
  "compiled-stdlib",
  "executor",
  "executor-types",
- "futures 0.3.5",
+ "futures 0.3.7",
  "generate-key",
  "hex",
  "hyper",
@@ -3005,7 +3005,7 @@ dependencies = [
  "executor",
  "executor-test-helpers",
  "executor-types",
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-config",
  "libra-crypto",
  "libra-genesis-tool",
@@ -3038,7 +3038,7 @@ dependencies = [
  "libra-workspace-hack",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -3097,7 +3097,7 @@ dependencies = [
  "anyhow",
  "bounded-executor",
  "channel",
- "futures 0.3.5",
+ "futures 0.3.7",
  "itertools 0.9.0",
  "libra-canonical-serialization",
  "libra-config",
@@ -3131,7 +3131,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "assert_approx_eq",
- "futures 0.3.5",
+ "futures 0.3.7",
  "hyper",
  "libra-logger",
  "libra-metrics-core",
@@ -3206,7 +3206,7 @@ dependencies = [
  "executor",
  "executor-types",
  "fail",
- "futures 0.3.5",
+ "futures 0.3.7",
  "jemallocator",
  "libra-config",
  "libra-crypto",
@@ -3289,7 +3289,7 @@ name = "libra-secure-json-rpc"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "futures 0.3.5",
+ "futures 0.3.7",
  "hex",
  "libra-canonical-serialization",
  "libra-config",
@@ -3592,7 +3592,7 @@ dependencies = [
  "serde",
  "sha-1 0.9.1",
  "subtle",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -3677,7 +3677,7 @@ name = "many-keys-stress-test"
 version = "0.1.0"
 dependencies = [
  "channel",
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-workspace-hack",
  "structopt 0.3.18",
 ]
@@ -3732,7 +3732,7 @@ name = "memsocket"
 version = "0.1.0"
 dependencies = [
  "bytes",
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-workspace-hack",
  "once_cell",
 ]
@@ -3997,7 +3997,7 @@ dependencies = [
  "datatest-stable",
  "docgen",
  "errmapgen",
- "futures 0.3.5",
+ "futures 0.3.7",
  "handlebars",
  "hex",
  "itertools 0.9.0",
@@ -4162,13 +4162,13 @@ version = "0.1.0"
 dependencies = [
  "async-trait",
  "bytes",
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-logger",
  "libra-network-address",
  "libra-types",
  "libra-workspace-hack",
  "memsocket",
- "pin-project",
+ "pin-project 0.4.25",
  "serde",
  "tokio",
 ]
@@ -4181,7 +4181,7 @@ dependencies = [
  "bytes",
  "channel",
  "criterion",
- "futures 0.3.5",
+ "futures 0.3.7",
  "futures-util",
  "hex",
  "libra-bitvec",
@@ -4201,7 +4201,7 @@ dependencies = [
  "network-builder",
  "num-variants",
  "once_cell",
- "pin-project",
+ "pin-project 0.4.25",
  "proptest",
  "proptest-derive",
  "rand 0.7.3",
@@ -4222,7 +4222,7 @@ name = "network-builder"
 version = "0.1.0"
 dependencies = [
  "channel",
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-canonical-serialization",
  "libra-config",
  "libra-crypto",
@@ -4250,7 +4250,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "channel",
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-canonical-serialization",
  "libra-config",
  "libra-crypto",
@@ -4388,7 +4388,7 @@ checksum = "6f09b9841adb6b5e1f89ef7087ea636e0fd94b2851f887c1e3eb5d5f8228fab3"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -4452,7 +4452,7 @@ dependencies = [
  "libra-workspace-hack",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -4666,7 +4666,7 @@ dependencies = [
  "pest_meta",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -4696,7 +4696,16 @@ version = "0.4.25"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2b9e280448854bd91559252582173b3bd1f8e094a0e644791c0628ca9b1f144f"
 dependencies = [
- "pin-project-internal",
+ "pin-project-internal 0.4.25",
+]
+
+[[package]]
+name = "pin-project"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ee41d838744f60d959d7074e3afb6b35c7456d0f61cad38a24e35e6553f73841"
+dependencies = [
+ "pin-project-internal 1.0.1",
 ]
 
 [[package]]
@@ -4707,7 +4716,18 @@ checksum = "c8c8b352676bc6a4c3d71970560b913cea444a7a921cc2e2d920225e4b91edaa"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
+]
+
+[[package]]
+name = "pin-project-internal"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "81a4ffa594b66bff340084d4081df649a7dc049ac8d7fc458d8e628bfbbb2f86"
+dependencies = [
+ "proc-macro2 1.0.24",
+ "quote 1.0.7",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -4800,7 +4820,7 @@ dependencies = [
  "proc-macro-error-attr",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
  "version_check",
 ]
 
@@ -5201,7 +5221,7 @@ checksum = "7d21b475ab879ef0e315ad99067fa25778c3b0377f57f1b00207448dac1a3144"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -5258,7 +5278,7 @@ checksum = "475e68978dc5b743f2f40d8e0a8fdc83f1c5e78cbf4b8fa5e74e73beebc340de"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -5348,7 +5368,7 @@ checksum = "7af1c42491edaa3b2582c6f3a0221f5ef4ed7a02c71cf1f614bb12877e1d44dd"
 dependencies = [
  "async-trait",
  "bytes",
- "futures 0.3.5",
+ "futures 0.3.7",
  "rusoto_core",
  "serde_urlencoded",
  "xml-rs",
@@ -5364,7 +5384,7 @@ dependencies = [
  "base64 0.12.3",
  "bytes",
  "crc32fast",
- "futures 0.3.5",
+ "futures 0.3.7",
  "http",
  "hyper",
  "hyper-tls",
@@ -5372,7 +5392,7 @@ dependencies = [
  "log",
  "md5",
  "percent-encoding",
- "pin-project",
+ "pin-project 0.4.25",
  "rusoto_credential",
  "rusoto_signature",
  "rustc_version",
@@ -5391,9 +5411,9 @@ dependencies = [
  "async-trait",
  "chrono",
  "dirs 2.0.2",
- "futures 0.3.5",
+ "futures 0.3.7",
  "hyper",
- "pin-project",
+ "pin-project 0.4.25",
  "regex",
  "serde",
  "serde_json",
@@ -5410,7 +5430,7 @@ checksum = "1146e37a7c1df56471ea67825fe09bbbd37984b5f6e201d8b2e0be4ee15643d8"
 dependencies = [
  "async-trait",
  "bytes",
- "futures 0.3.5",
+ "futures 0.3.7",
  "rusoto_core",
  "xml-rs",
 ]
@@ -5423,7 +5443,7 @@ checksum = "97a740a88dde8ded81b6f2cff9cd5e054a5a2e38a38397260f7acdd2c85d17dd"
 dependencies = [
  "base64 0.12.3",
  "bytes",
- "futures 0.3.5",
+ "futures 0.3.7",
  "hex",
  "hmac 0.8.1",
  "http",
@@ -5431,7 +5451,7 @@ dependencies = [
  "log",
  "md5",
  "percent-encoding",
- "pin-project",
+ "pin-project 0.4.25",
  "rusoto_credential",
  "rustc_version",
  "serde",
@@ -5449,7 +5469,7 @@ dependencies = [
  "async-trait",
  "bytes",
  "chrono",
- "futures 0.3.5",
+ "futures 0.3.7",
  "rusoto_core",
  "serde_urlencoded",
  "tempfile",
@@ -5779,7 +5799,7 @@ checksum = "f630a6370fd8e457873b4bd2ffdae75408bc291ba72be773772a4c2a065d9ae8"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -5836,7 +5856,7 @@ checksum = "65f59259be9fc1bf677d06cc1456e97756004a1a5a577480f71430bd7c17ba33"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -6014,7 +6034,7 @@ dependencies = [
 name = "socket-bench-server"
 version = "0.1.0"
 dependencies = [
- "futures 0.3.5",
+ "futures 0.3.7",
  "libra-config",
  "libra-crypto",
  "libra-logger",
@@ -6093,7 +6113,7 @@ dependencies = [
  "executor",
  "executor-test-helpers",
  "executor-types",
- "futures 0.3.5",
+ "futures 0.3.7",
  "itertools 0.9.0",
  "libra-canonical-serialization",
  "libra-config",
@@ -6192,7 +6212,7 @@ dependencies = [
  "quote 1.0.7",
  "serde",
  "serde_derive",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -6208,7 +6228,7 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "sha1",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -6256,7 +6276,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-trait",
- "futures 0.3.5",
+ "futures 0.3.7",
  "itertools 0.9.0",
  "libra-canonical-serialization",
  "libra-config",
@@ -6279,10 +6299,10 @@ dependencies = [
 name = "stream-ratelimiter"
 version = "0.1.0"
 dependencies = [
- "futures 0.3.5",
+ "futures 0.3.7",
  "futures-semaphore",
  "libra-workspace-hack",
- "pin-project",
+ "pin-project 0.4.25",
  "tokio",
 ]
 
@@ -6335,7 +6355,7 @@ dependencies = [
  "proc-macro-error",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -6390,9 +6410,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "1.0.42"
+version = "1.0.48"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9c51d92969d209b54a98397e1b91c8ae82d8c87a7bb87df0b29aa2ad81454228"
+checksum = "cc371affeffc477f42a221a1e4297aedcea33d47d19b61455588bd9d8f6b19ac"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
@@ -6407,7 +6427,7 @@ checksum = "b834f2d66f734cb897113e34aaff2f1ab4719ca946f9a7358dba8f8064148701"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
  "unicode-xid 0.2.1",
 ]
 
@@ -6549,7 +6569,7 @@ checksum = "bd80fc12f73063ac132ac92aceea36734f04a1d93c1240c6944e23a3b8841793"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -6607,7 +6627,7 @@ dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
  "standback",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -6677,7 +6697,7 @@ checksum = "f0c3acc6aa564495a0f2e1d59fab677cd7f81a19994cfc7f3ad0e64301560389"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
 ]
 
 [[package]]
@@ -6721,7 +6741,7 @@ checksum = "6d9e878ad426ca286e4dcae09cbd4e1973a7f8987d97570e2469703dd7f5720c"
 dependencies = [
  "futures-util",
  "log",
- "pin-project",
+ "pin-project 0.4.25",
  "tokio",
  "tungstenite",
 ]
@@ -6782,7 +6802,7 @@ version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ab7bb6f14721aa00656086e9335d363c5c8747bae02ebe32ea2c7dece5689b4c"
 dependencies = [
- "pin-project",
+ "pin-project 0.4.25",
  "tracing",
 ]
 
@@ -7140,7 +7160,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f41be6df54c97904af01aa23e613d4521eed7ab23537cede692d4058f6449407"
 dependencies = [
  "bytes",
- "futures 0.3.5",
+ "futures 0.3.7",
  "headers",
  "http",
  "hyper",
@@ -7148,7 +7168,7 @@ dependencies = [
  "mime",
  "mime_guess",
  "multipart",
- "pin-project",
+ "pin-project 0.4.25",
  "scoped-tls",
  "serde",
  "serde_json",
@@ -7196,7 +7216,7 @@ dependencies = [
  "log",
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
  "wasm-bindgen-shared",
 ]
 
@@ -7230,7 +7250,7 @@ checksum = "841a6d1c35c6f596ccea1f82504a192a60378f64b3bb0261904ad8f2f5657556"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
  "wasm-bindgen-backend",
  "wasm-bindgen-shared",
 ]
@@ -7430,6 +7450,6 @@ checksum = "de251eec69fc7c1bc3923403d18ececb929380e016afe103da75f396704f8ca2"
 dependencies = [
  "proc-macro2 1.0.24",
  "quote 1.0.7",
- "syn 1.0.42",
+ "syn 1.0.48",
  "synstructure",
 ]
